@@ -1,0 +1,48 @@
+{
+  "name": "birkof/slackwebhook-notifier",
+  "type": "symfony-bridge",
+  "description": "Symfony Slack Webhook Notifier Bridge",
+  "keywords": [
+    "slack",
+    "slack-webhook",
+    "bridge",
+    "notifier"
+  ],
+  "homepage": "https://symfony.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Daniel Stancu",
+      "email": "birkof@birkof.ro"
+    },
+    {
+      "name": "Symfony Community",
+      "homepage": "https://symfony.com/contributors"
+    }
+  ],
+  "require": {
+    "php": "^7.2.5",
+    "symfony/http-client": "^4.3|^5.0",
+    "symfony/notifier": "^5.0",
+    "monolog/monolog": "~1.22 || ~2.0",
+    "symfony/slack-notifier": "^5.0"
+  },
+  "require-dev": {
+    "symfony/event-dispatcher": "^4.3|^5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "birkof\\SlackWebhookNotifier\\": ""
+    },
+    "exclude-from-classmap": [
+      "/Tests/"
+    ]
+  },
+  "extra": {
+    "patches": {
+      "symfony/notifier": {
+        "Add possibility to extract path from provided DSN": "https://raw.githubusercontent.com/birkof/slackwebhook-notifier/master/extract_path_from_dsn.patch"
+      }
+    }
+  }
+}

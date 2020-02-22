@@ -1,0 +1,53 @@
+Index: ./Transport/Dsn.php
+===================================================================
+--- ./Transport/Dsn.php
++++ ./Transport/Dsn.php
+@@ -26,8 +26,17 @@
+     private $password;
+     private $port;
+     private $options;
++    private $path;
+
+-    public function __construct(string $scheme, string $host, ?string $user = null, ?string $password = null, ?int $port = null, array $options = [])
++    public function __construct(
++        string $scheme,
++        string $host,
++        ?string $user = null,
++        ?string $password = null,
++        ?int $port = null,
++        array $options = [],
++        ?string $path = null
++    )
+     {
+         $this->scheme = $scheme;
+         $this->host = $host;
+@@ -35,6 +44,7 @@
+         $this->password = $password;
+         $this->port = $port;
+         $this->options = $options;
++        $this->path = $path;
+     }
+
+     public static function fromString(string $dsn): self
+@@ -54,9 +64,10 @@
+         $user = isset($parsedDsn['user']) ? urldecode($parsedDsn['user']) : null;
+         $password = isset($parsedDsn['pass']) ? urldecode($parsedDsn['pass']) : null;
+         $port = $parsedDsn['port'] ?? null;
++        $path = $parsedDsn['path'] ?? null;
+         parse_str($parsedDsn['query'] ?? '', $query);
+
+-        return new self($parsedDsn['scheme'], $parsedDsn['host'], $user, $password, $port, $query);
++        return new self($parsedDsn['scheme'], $parsedDsn['host'], $user, $password, $port, $query, $path);
+     }
+
+     public function getScheme(): string
+@@ -88,4 +99,9 @@
+     {
+         return $this->options[$key] ?? $default;
+     }
++
++    public function getPath(): ?string
++    {
++        return $this->path;
++    }
+ }
