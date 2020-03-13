@@ -121,7 +121,6 @@ final class SlackWebhookTransport extends AbstractTransport
             [
                 'level'      => $options['level'] ?? 0,
                 'level_name' => $options['level_name'] ?? null,
-                'level_name' => $options['level_name'] ?? null,
                 'extra'      => $options['extra'] ?? null,
                 'context'    => $options['context'] ?? null,
                 'datetime'   => new \DateTime(),
