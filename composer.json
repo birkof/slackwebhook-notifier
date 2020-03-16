@@ -22,7 +22,6 @@
   ],
   "require": {
     "php": "^7.2.5",
-    "cweagans/composer-patches": "^1.6",
     "symfony/http-client": "^4.3|^5.0",
     "symfony/http-foundation": "^4.3|^5.0",
     "symfony/notifier": "^5.0",
@@ -44,11 +43,6 @@
   "extra": {
     "branch-alias": {
       "dev-master": "5.1-dev"
-    },
-    "patches": {
-      "symfony/notifier": {
-        "Add possibility to extract path from provided DSN": "https://raw.githubusercontent.com/birkof/slackwebhook-notifier/master/extract_path_from_dsn.patch"
-      }
     }
   }
 }
